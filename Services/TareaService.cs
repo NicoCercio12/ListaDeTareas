@@ -38,7 +38,7 @@ namespace ListaDeTareas.Services
                 throw new Exception("La tarea ya existe");
             }
 
-            _context.Tareas.Add(new Tarea(0, Titulo, Descripcion, FechaCreacion));
+            _context.Tareas.Add(new Tarea(0, Titulo, Descripcion, false, FechaCreacion));
             _context.SaveChanges();
 
             return true;
@@ -56,7 +56,64 @@ namespace ListaDeTareas.Services
             return tareas;
         }
 
+        public Tarea traerTarea(int Id)
+        {
 
+            List<Tarea> tareas = new List<Tarea>();
+
+            int i = 0;
+            Tarea encontrada = null;
+
+            while (i < tareas.Count && encontrada == null)
+            {
+                Tarea t = tareas[i];
+
+                if (t.Id == Id)
+                {
+                    encontrada = t;
+                }
+
+                i++;
+            }
+
+            return encontrada;
+        }
+
+        public bool ModificarTarea(int Id, string Titulo, string Descripcion, bool Completada)
+        {
+
+            Tarea tarea = traerTarea(Id);
+
+            if (tarea == null)
+            {
+                throw new Exception("La tarea no existe");
+            }
+
+            tarea.Titulo = Titulo;
+            tarea.Descripcion = Descripcion;
+            tarea.Completada = Completada;
+
+            _context.Tareas.Update(tarea);
+            _context.SaveChanges();
+
+            return true;
+        }
+
+        public bool EliminarTarea(int Id)
+        {
+            Tarea tarea = traerTarea(Id);
+
+            if (tarea == null)
+            {
+                throw new Exception("La tarea no existe");
+            }
+
+            _context.Tareas.Remove(tarea);
+            _context.SaveChanges();
+
+            return true;
+
+        }
 
     }
 }
