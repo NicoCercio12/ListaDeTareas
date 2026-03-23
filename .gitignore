@@ -1,0 +1,57 @@
+# .NET Core
+bin/
+obj/
+*.dll
+*.pdb
+*.exe
+
+# Visual Studio / VS Code
+.vs/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Entity Framework / SQLite
+*.db
+*.db-shm
+*.db-wal
+Migrations/
+
+# User-specific
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+logs/
+*.log
+logs-*
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Dependencies
+**/packages/*
+!**/.package-lock.json
+
+# Testing
+coverage/
+artifacts/
+**/TestResults/
+
+# NuGet
+*.nupkg
+# NuGet v3 cache
+(([Tt]est|[Rr]elease)-? )?packages/
+
+# Windows thumbnails
+ehthumbs.db
