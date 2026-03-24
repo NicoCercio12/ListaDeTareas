@@ -14,9 +14,9 @@ namespace ListaDeTareas.Services
         }
 
 
-        public bool AgregarTarea(string Titulo, string Descripcion, DateTime FechaCreacion)
+        public bool AgregarTarea(string Titulo, string Descripcion, bool v, DateTime FechaCreacion)
         {
-            List<Tarea> tareas = new List<Tarea>();
+            List<Tarea> tareas = _context.Tareas.ToList();
 
             int i = 0;
             bool existe = false;
@@ -59,7 +59,7 @@ namespace ListaDeTareas.Services
         public Tarea traerTarea(int Id)
         {
 
-            List<Tarea> tareas = new List<Tarea>();
+            List<Tarea> tareas = _context.Tareas.ToList();
 
             int i = 0;
             Tarea encontrada = null;
